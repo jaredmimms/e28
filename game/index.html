@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <title>Whac-A-Virus</title>
+    <meta charset='utf-8'>
+    <link href=data:, rel=icon>
+</head>
+
+<body>
+    <h1>Whac-A-Virus</h1>
+    <p>By Jared Mimms</p>
+    <img src="images/biohazard_bin.png" width="100">
+    <img src="images/biohazard_bin.png" width="100">
+    <img src="images/biohazard_bin.png" width="100">
+    <img src="images/biohazard_bin.png" width="100">
+    <img src="images/biohazard_bin.png" width="100">
+    <img src="images/biohazard_bin.png" width="100">
+    <br>
+    <button>Start</button>
+    <p id="timeContainer"></p>
+    <script>
+        let startButton = document.querySelector('button');
+        let startTime;
+        function reset(e) {
+            let endTime = Date.now() - startTime;
+            document.getElementById('timeContainer').innerHTML = endTime + ' milliseconds';
+            e.currentTarget.removeEventListener('click', reset);
+            e.currentTarget.src = "images/biohazard_bin.png";
+            e.currentTarget.style.cursor = 'default';
+            setup();
+        }
+        function setup() {
+            startTime = Date.now();
+            let randomNumber = Math.floor(Math.random() * 6);
+            let images = document.querySelectorAll('img');
+            let selectedImage = images[randomNumber];
+            selectedImage.src = "images/coronavirus3.png";
+            selectedImage.style.cursor = 'pointer';
+            selectedImage.addEventListener('click', reset);
+        }
+        function start() {
+            setup();
+            let startButton = document.querySelector('button');
+            startButton.style.display = 'none';
+        }
+        startButton.addEventListener('click', start);
+    </script>
+</body>
+
+</html>
