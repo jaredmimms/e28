@@ -10,12 +10,12 @@
 <body>
     <h1>Whac-A-Virus</h1>
     <p>By Jared Mimms</p>
-    <img src="images/biohazard_bin.png" width="100">
-    <img src="images/biohazard_bin.png" width="100">
-    <img src="images/biohazard_bin.png" width="100">
-    <img src="images/biohazard_bin.png" width="100">
-    <img src="images/biohazard_bin.png" width="100">
-    <img src="images/biohazard_bin.png" width="100">
+    <img src="images/biohazard_bin.png" alt="Biohazard Bin" width="100">
+    <img src="images/biohazard_bin.png" alt="Biohazard Bin" width="100">
+    <img src="images/biohazard_bin.png" alt="Biohazard Bin" width="100">
+    <img src="images/biohazard_bin.png" alt="Biohazard Bin" width="100">
+    <img src="images/biohazard_bin.png" alt="Biohazard Bin" width="100">
+    <img src="images/biohazard_bin.png" alt="Biohazard Bin" width="100">
     <br>
     <button>Start</button>
     <p id="timeContainer"></p>
@@ -27,6 +27,7 @@
             document.getElementById('timeContainer').innerHTML = endTime + ' milliseconds';
             e.currentTarget.removeEventListener('click', reset);
             e.currentTarget.src = "images/biohazard_bin.png";
+            e.currentTarget.alt = "Biohazard Bin";
             e.currentTarget.style.cursor = 'default';
             setup();
         }
@@ -36,6 +37,7 @@
             let images = document.querySelectorAll('img');
             let selectedImage = images[randomNumber];
             selectedImage.src = "images/coronavirus3.png";
+            selectedImage.alt = "Coronavirus";
             selectedImage.style.cursor = 'pointer';
             selectedImage.addEventListener('click', reset);
         }
