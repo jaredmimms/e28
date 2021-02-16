@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <title>Vue.js Intro</title>
+    <meta charset='utf-8'>
+    <link href=data:, rel=icon>
+
+    <script src='https://unpkg.com/vue@next' defer></script>
+    <script src='script.js' defer></script>
+</head>
+
+<body>
+    <h1>Vue.js Intro</h1>
+
+    <div id='app'>
+        <label>What’s your name? <input type='text' v-model='playerName'></label>
+        <p>Player: {{ playerName }}</p>
+        <label>
+            I’m thinking of a number between 1 and 10. What do you think it is?
+            <input type='text' v-model='guess'>
+            <button v-on:click='guesses.push(guess)'>Submit guess</button>
+        </label>
+        <p>{{ guesses }}</p>
+    </div>
+</body>
+
+</html>
