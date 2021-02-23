@@ -1,14 +1,19 @@
 const ShoppingList = {
     data() {
         return {
-            item: '',
-            itemList: [],
-            count: 0
+            item: {
+
+            },
+            itemList: []
         }
     },
     methods: {
         addItem() {
             this.itemList.push(this.item);
+            this.item = {};
+        },
+        deleteItem(index) {
+            this.itemList.splice(index, 1);
         }
     }
 }
