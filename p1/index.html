@@ -8,12 +8,23 @@
 
     <script src='https://unpkg.com/vue@next' defer></script>
     <script src='script.js' defer></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Project 1</h1>
-
-    <div id='app'>
+    <h1>Whac-A-Virus</h1>
+    <p>By Jared Mimms</p>
+    <div id='app' v-cloak>
+        <img v-for='(state, index) in states' v-bind:src='state.src' v-bind:alt='state.alt' v-bind:width='state.width'
+            @click='chosen'>
+        <div v-if="!started">
+            <br>
+            <button @click='start'>Start</button>
+        </div>
     </div>
 </body>
 
