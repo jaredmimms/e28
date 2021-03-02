@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <title>Word Scramble</title>
+    <meta charset='utf-8'>
+    <link href=data:, rel=icon>
+
+    <script src='https://unpkg.com/vue@next' defer></script>
+    <script src='script.js' defer></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        button {
+            margin-left: .2em;
+        }
+
+        span {
+            margin-top: .5em;
+            margin-bottom: .5em;
+            display: inline-block;
+        }
+
+        .correct {
+            background-color: green;
+            width: 15em;
+        }
+
+        .incorrect {
+            background-color: red;
+            width: 17em;
+        }
+
+        .correct,
+        .incorrect {
+            color: white;
+            padding: .2em;
+            margin-top: .4em;
+        }
+
+        #scrambled {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Word Scramble</h1>
+
+    <div id='app' v-cloak>
+        <div v-if='!loaded'>
+            <label>Enter your player name: <input type='text' v-model='playerName' @keyup.enter='addName'><button
+                    v-on:click='addName'>Let's
+                    play!</button></label>
+        </div>
+        <div v-if='loaded'>
+            <span>Game on, {{ playerName }}!</span>
+            <br>
+            <span id='mysteryWord'>Your mystery word is: <span id='scrambled'>{{ scrambled }}</span></span>
+            <br>
+            <span id='hint'>Hint: <em>{{ selectedWord[0][1] }}</em></span>
+            <br>
+            <label>Your Guess: <input type='text' v-model='guess' @keyup.enter='takeGuess'><button
+                    v-on:click='takeGuess'>Submit guess</button></label>
+            <div v-if="classApply" v-bind:class='classApply'>
+                <template v-if='classApply == "correct"'>
+                    You got it! Nice work. <button v-on:click='playAgain'>Play again</button>
+                </template>
+                <template v-if='classApply == "incorrect"'>
+                    Sorry, that's not correct. Please try again.
+                </template>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
