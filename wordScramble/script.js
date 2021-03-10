@@ -66,5 +66,20 @@ const WordScramble = {
             this.selectedWordIndex = indexed;
         }
     }
-}
-const app = Vue.createApp(WordScramble).mount('#app');
+};
+
+const SuccessError = {
+    name: 'SuccessError',
+    props: ['classApply'],
+    data() {
+        return {
+        }
+    },
+    template: '#success-error'
+};
+
+const app = Vue.createApp(WordScramble);
+
+app.component('success-error', SuccessError);
+
+app.mount('#app');

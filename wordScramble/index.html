@@ -64,16 +64,21 @@
             <br>
             <label>Your Guess: <input type='text' v-model='guess' @keyup.enter='takeGuess'><button
                     v-on:click='takeGuess'>Submit guess</button></label>
-            <div v-if="classApply" v-bind:class='classApply'>
-                <template v-if='classApply == "correct"'>
-                    You got it! Nice work. <button v-on:click='playAgain'>Play again</button>
-                </template>
-                <template v-if='classApply == "incorrect"'>
-                    Sorry, that's not correct. Please try again.
-                </template>
-            </div>
+            <success-error v-if='classApply' v-on:play-again='playAgain' v-bind:class-apply='classApply'>
+            </success-error>
         </div>
     </div>
+
+    <script type='text/x-template' id='success-error'>
+        <div v-bind:class='classApply'>
+            <template v-if='classApply == "correct"'>
+                You got it! Nice work. <button v-on:click="$emit('play-again')">Play again</button>
+            </template>
+            <template v-if='classApply == "incorrect"'>
+                Sorry, that's not correct. Please try again.
+            </template>
+        </div>
+    </script>
 </body>
 
 </html>
