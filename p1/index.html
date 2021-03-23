@@ -12,6 +12,10 @@
         [v-cloak] {
             display: none;
         }
+
+        .coronavirus {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -19,13 +23,40 @@
     <h1>Whac-A-Virus</h1>
     <p>By Jared Mimms</p>
     <div id='app' v-cloak>
-        <img v-for='(state, index) in states' v-bind:src='state.src' v-bind:alt='state.alt' v-bind:width='state.width'
-            @click='chosen'>
+        <template v-for='(state, index) in states'>
+            <img v-if="state.alt == 'Coronavirus'" v-bind:src='state.src' v-bind:alt='state.alt'
+                v-bind:width='state.width' @click='chosen(index)' v-bind:class='state.class'>
+            <img v-else v-bind:src='state.src' v-bind:alt='state.alt' v-bind:width='state.width'
+                v-bind:class='state.class'>
+        </template>
         <div v-if="!started">
             <br>
             <button @click='start'>Start</button>
         </div>
+        <div v-else>
+            <br>
+            <button @click='reset'>Reset</button>
+        </div>
+        <template v-if="history && history[0]">
+            <p>Average time:</p>
+            <p>{{ average }} milliseconds</p>
+            <p>Past attempts:</p>
+            <delete-round v-for="(historied, ind) in history" v-bind:key='historied.round'
+                v-bind:round-number='historied.round' v-bind:end-time='historied.endTime'
+                v-on:delete-now='deleteNow(ind)'>
+            </delete-round>
+        </template>
     </div>
+    <script type='text/x-template' id='delete-round'>
+        <div>
+            Round {{roundNumber}}:
+            <br>
+            {{endTime}} milliseconds
+        </div>
+        <div>
+            <button v-on:click="$emit('delete-now')">Delete</button> 
+        </div>
+    </script>
 </body>
 
 </html>
