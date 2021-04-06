@@ -1,3 +1,6 @@
+import { createApp } from 'vue'
+import SuccessError from './components/SuccessError.vue'
+
 const WordScramble = {
     data() {
         return {
@@ -68,17 +71,7 @@ const WordScramble = {
     }
 };
 
-const SuccessError = {
-    name: 'SuccessError',
-    props: ['classApply'],
-    data() {
-        return {
-        }
-    },
-    template: '#success-error'
-};
-
-const app = Vue.createApp(WordScramble);
+const app = createApp(WordScramble);
 
 app.component('success-error', SuccessError);
 
