@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Add a Product</h2>
+    <h2>Add a Post</h2>
 
     <div id="inputs">
       <label for="title">Title</label>
