@@ -1,12 +1,9 @@
 <template>
   <div class="show-product">
-    <a v-bind:href="'/product/' + product.id">
+    <router-link v-bind:to="'/product/' + product.id">
       <div class="name">{{ product.name }}</div>
-      <img
-        class="thumb"
-        v-bind:src="require('@/assets/images/products/' + product.id + '.jpg')"
-      />
-    </a>
+      <img class="thumb" v-bind:src="imgSrc" />
+    </router-link>
   </div>
 </template>
 
@@ -15,6 +12,15 @@ export default {
   props: {
     product: {
       type: Object,
+    },
+  },
+  computed: {
+    imgSrc() {
+      try {
+        return require("@/assets/images/products/" + this.product.id + ".jpg");
+      } catch (e) {
+        return require("@/assets/images/products/image-not-available.jpg");
+      }
     },
   },
 };

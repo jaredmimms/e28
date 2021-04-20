@@ -1,0 +1,36 @@
+{
+    "permission_level": 0,
+    "fields": {
+        "title": {
+            "type": "string",
+            "validators": [
+                "required",
+                "min:3",
+                "max:100"
+            ]
+        },
+        "content": {
+            "type": "text",
+            "validators": [
+                "required",
+                "min:100"
+            ]
+        },
+        "favorite": {
+            "type": "boolean",
+            "validators": [
+                "required"
+            ]
+        },
+        "featured": {
+            "type": "boolean",
+            "validators": [
+                "required"
+            ]
+        },
+        "categories": {
+            "type": "string",
+            "validators": []
+        }
+    }
+}
