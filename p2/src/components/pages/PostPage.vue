@@ -26,7 +26,7 @@
           Content required
         </div>
 
-        <label for="categories">Categories (seperated by comma)</label>
+        <label for="categories">Categories (separated by comma)</label>
         <input type="text" v-model="post.categories" id="categories" />
       </div>
 
