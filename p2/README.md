@@ -1,4 +1,6 @@
 # p2
+## By: Jared Mimms
+### Production URL: [http://e28p2.jaredmimms.me](http://e28p2.jaredmimms.me)
 
 ## Project setup
 ```
