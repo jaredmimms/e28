@@ -1,26 +1,32 @@
-# p2
-## By: Jared Mimms
-### Production URL: [http://e28p2.jaredmimms.me](http://e28p2.jaredmimms.me)
+# Project 2
+* By: Jared Mimms
+* Production URL: [http://e28p2.jaredmimms.me](http://e28p2.jaredmimms.me)
 
-## Project setup
-```
-npm install
-```
+## Pages summary
+* Home (displays featured)
+* Categories (displays tags)
+* Favorites
+* Post Create 
+* Post (edit post and navigate posts right or left)
+* Posts (show all posts)
+* Search 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## SFC summary
+* HomePage.vue: displays home page with featured posts
+* FavoritesPage.vue: shows favorited posts
+* PostCreatePage.vue: allows user to create new post
+* PostPage.vue: displays post name and description and allows for editing of posts and navigation
+* PostsPage.vue: displays the names of all posts
+* SearchPage.vue: allows user to search for posts
+* CategoriesPage.vue: displays category tags for grouping of posts
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Server interaction
+* post
+    - title (string)
+    - content (text string)
+    - favorite (boolean)
+    - featured (boolean)
+    - catgories (string)
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Outside resources
+favicon generator: [https://redketchup.io/favicon-generator](https://redketchup.io/favicon-generator)
