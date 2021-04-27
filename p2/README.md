@@ -26,7 +26,7 @@
     - content (text string)
     - favorite (boolean)
     - featured (boolean)
-    - catgories (string)
+    - categories (string)
 
 ## Outside resources
 favicon generator: [https://redketchup.io/favicon-generator](https://redketchup.io/favicon-generator)
