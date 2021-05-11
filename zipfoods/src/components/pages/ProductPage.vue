@@ -5,7 +5,7 @@
       <div class="name">{{ product.name }}</div>
       <img class="thumb" v-bind:src="imgSrc" />
 
-      <div class="price">${{ product.price }}</div>
+      <div class="price" data-test="product-price">${{ product.price }}</div>
       <p class="description">{{ product.description }}</p>
       <div v-if="updated">
         <label for="name">Name</label>

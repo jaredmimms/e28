@@ -1,7 +1,7 @@
 <template>
   <div class="show-product">
     <router-link v-bind:to="'/product/' + product.id">
-      <div class="name">{{ product.name }}</div>
+      <div class="name" data-test="product-name">{{ product.name }}</div>
       <img class="thumb" v-bind:src="imgSrc" />
     </router-link>
   </div>

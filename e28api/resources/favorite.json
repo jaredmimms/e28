@@ -1,7 +1,7 @@
 {
     "permission_level": 0,
     "fields": {
-        "product_id": {
+        "post_id": {
             "type": "integer",
             "validators": [
                 "required",

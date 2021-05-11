@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <button v-on:click="addPost">Add Post</button>
+    <button v-on:click="addPost" id="addpost">Add Post</button>
     <div v-if="success" class="success">Post successfully added</div>
     <div v-if="failure && errors" class="error">Error adding post</div>
   </div>
@@ -56,6 +56,7 @@
 <script>
 import { axios } from "@/common/app.js";
 import Validator from "validatorjs";
+import { router } from "@/common/router.js";
 
 export default {
   data() {
@@ -99,6 +100,7 @@ export default {
             this.success = true;
             this.failure = false;
             this.$emit("update-posts");
+            router.push("/post/" + response.data.post.id);
           }
         });
       }

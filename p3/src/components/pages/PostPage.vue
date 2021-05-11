@@ -80,23 +80,25 @@
       <button v-on:click="deleted">Delete</button>
     </div>
 
-    <div v-if="favorite">
-      <button v-on:click="removeFavorite">Remove Favorite</button>
+    <div v-if="favorite && user">
+      <button v-on:click="removeFavorite" id="removeFav">
+        Remove Favorite
+      </button>
     </div>
 
-    <div v-if="!favorite">
-      <button v-on:click="addFavorite">Add Favorite</button>
+    <div v-if="!favorite && user">
+      <button v-on:click="addFavorite" id="addFav">Add Favorite</button>
     </div>
 
     <div v-if="previousPost">
       <router-link v-bind:to="'/post/' + previousPost.id">
-        <button>Previous</button>
+        <button id="previous">Previous</button>
       </router-link>
     </div>
 
     <div v-if="nextPost">
       <router-link v-bind:to="'/post/' + nextPost.id">
-        <button>Next</button>
+        <button id="next">Next</button>
       </router-link>
     </div>
   </div>
@@ -196,22 +198,24 @@ export default {
       });
     },
     loadFavorites() {
-      axios.get("favorite/query?post_id=" + this.post.id).then((response) => {
-        if (response.data && response.data.favorite[0]) {
-          var hit;
-          response.data.favorite.forEach((favorite) => {
-            if (favorite.user_id == this.user.id) {
-              this.favorite = favorite;
-              hit = true;
+      if (this.post) {
+        axios.get("favorite/query?post_id=" + this.post.id).then((response) => {
+          if (response.data && response.data.favorite[0]) {
+            var hit;
+            response.data.favorite.forEach((favorite) => {
+              if (favorite.user_id == this.user.id) {
+                this.favorite = favorite;
+                hit = true;
+              }
+            });
+            if (!hit) {
+              this.favorite = false;
             }
-          });
-          if (!hit) {
+          } else {
             this.favorite = false;
           }
-        } else {
-          this.favorite = false;
-        }
-      });
+        });
+      }
     },
     removeFavorite() {
       axios.delete("/favorite/" + this.favorite.id).then(() => {

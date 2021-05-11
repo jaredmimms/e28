@@ -3,8 +3,7 @@
 + Production URL: <http://e28p3.jaredmimms.me>
 
 ## Outside resources
-
-## Notes for instructor
+favicon generator: [https://redketchup.io/favicon-generator](https://redketchup.io/favicon-generator)
 
 ## How is authentication being used in your application?
 Authentication is required to add a new blog post.

@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <button v-on:click="logout">Logout</button>
+      <button v-on:click="logout" id="logout1">Logout</button>
     </div>
 
     <div v-else id="loginForm">
@@ -34,7 +34,7 @@
           </label>
         </div>
 
-        <button v-on:click="login">Login</button>
+        <button v-on:click="login" id="login1">Login</button>
 
         <ul v-if="errors">
           <li class="error" v-for="(error, index) in errors" :key="index">
@@ -72,13 +72,15 @@
       </div>
 
       <div v-if="!registerToggle">
-        <button v-on:click="registerToggle = true">Register</button>
+        <button v-on:click="registerToggle = true" id="register1">
+          Register
+        </button>
       </div>
       <div v-if="registerToggle">
-        <button v-on:click="register">Register</button>
+        <button v-on:click="register" id="register2">Register</button>
       </div>
       <div v-if="registerToggle">
-        <button v-on:click="registerToggle = false">Login</button>
+        <button v-on:click="registerToggle = false" id="login2">Login</button>
       </div>
     </div>
   </div>
@@ -94,9 +96,9 @@ export default {
         password: "asdfasdf",
       },
       registerData: {
-        email: "",
-        password: "",
-        name: "",
+        email: "jaredmimms@gmail.com",
+        password: "hellothere",
+        name: "Jared Mimms",
       },
       registerToggle: false,
       errors: null,
@@ -134,6 +136,7 @@ export default {
       axios.post("register", this.registerData).then((response) => {
         if (response.data.success) {
           this.$store.commit("setUser", response.data.user);
+          this.registerToggle = false;
         } else {
           this.errors = response.data.errors;
         }
@@ -144,6 +147,7 @@ export default {
         if (response && response.data && response.data.success) {
           this.$store.commit("setUser", null);
         }
+        this.registerToggle = false;
       });
     },
   },
